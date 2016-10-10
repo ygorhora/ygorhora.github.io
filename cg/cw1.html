@@ -14,7 +14,7 @@ main()
     gl_Position = vPosition;
     float d = sqrt(pow(vPosition.x, 2.0) + pow(vPosition.y, 2.0));
     gl_Position.x = vPosition.x * cos(d*theta) - vPosition.y * sin(d*theta);
-    gl_Position.y = vPosition.y * sin(d*theta) + vPosition.y * cos(d*theta);
+    gl_Position.y = vPosition.x * sin(d*theta) + vPosition.y * cos(d*theta);
 
 }
 </script>
