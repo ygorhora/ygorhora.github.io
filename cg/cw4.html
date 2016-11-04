@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+	<title>Cubo 3D</title>
+<!-- VERTEX SHADER-->
+<script id="vertex-shader" type="x-shader/x-vertex">
+uniform int u_fixedScene;
+uniform mat4 u_rotateMatrix;
+uniform mat4 u_viewMatrix;
+attribute vec4 a_vPosition;
+attribute vec4 a_vColor;
+varying vec4 vColor;
+
+uniform vec3 theta;
+
+void main(){
+	if(u_fixedScene==1){
+		gl_Position = u_viewMatrix * a_vPosition;
+	} else {
+		gl_Position = u_viewMatrix * u_rotateMatrix * a_vPosition;
+	}
+	vColor = a_vColor;
+}
+</script>
+
+<!-- FRAGMENT SHADER -->
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec4 vColor;
+
+void main(){
+    gl_FragColor = vColor;
+}
+</script>
+
+    <script src="./tealBookCommon/cuon-matrix.js"></script>
+	<script type="text/javascript" src="./angelCommon/webgl-utils.js"></script>
+	<script type="text/javascript" src="./angelCommon/initShaders.js"></script>
+	<script type="text/javascript" src="./angelCommon/MV.js"></script>
+	<script type="text/javascript" src="./cubo.js"></script>
+
+</head>
+
+<body>
+
+	<canvas id="gl-canvas" width="512" height="512">
+		Your browser doesn't support the HTML5 canvas element.
+	</canvas>
+	
+	</br>
+	
+	<button id= "xButton">Rotate X</button>
+	<button id= "yButton">Rotate Y</button>
+	<button id= "zButton">Rotate Z</button>
+
+	</br>
+
+	<form>
+	  Eye Point:</br> 
+	  X: -5<input id="lookAtX" type="range" min="-5" max="5" step="0.2" value="0">5</br>
+	  Y: -5<input id="lookAtY" type="range" min="-5" max="5" step="0.2" value="3">5</br>
+	  Z: 5<input id="lookAtZ" type="range" min="5" max="10" step="0.2" value="10">10</br>
+	  <input type="checkbox" id="ortho"> Orthographic? </br>
+	</form>
+
+</body>
+</html>

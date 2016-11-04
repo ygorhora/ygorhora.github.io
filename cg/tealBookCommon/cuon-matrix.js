@@ -595,10 +595,12 @@ Matrix4.prototype.setLookAt = function(eyeX, eyeY, eyeZ, centerX, centerY, cente
   fy *= rlf;
   fz *= rlf;
 
+
   // Calculate cross product of f and up.
   sx = fy * upZ - fz * upY;
   sy = fz * upX - fx * upZ;
   sz = fx * upY - fy * upX;
+
 
   // Normalize s.
   rls = 1 / Math.sqrt(sx*sx + sy*sy + sz*sz);
@@ -606,10 +608,12 @@ Matrix4.prototype.setLookAt = function(eyeX, eyeY, eyeZ, centerX, centerY, cente
   sy *= rls;
   sz *= rls;
 
+
   // Calculate cross product of s and f.
   ux = sy * fz - sz * fy;
   uy = sz * fx - sx * fz;
   uz = sx * fy - sy * fx;
+
 
   // Set to this.
   e = this.elements;
