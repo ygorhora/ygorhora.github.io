@@ -174,7 +174,7 @@ function init(gl){
 					.rotate(theta.y, 0, 1, 0)
 					.rotate(theta.z, 0, 0, 1);
 
-		/***********************************************************************/
+	/***************************************************************************/
 		// Cria um buffer de cores;
 		// Vincula colors como o buffer onde cada elemento é uma cor para a face 
 		// triangulada
